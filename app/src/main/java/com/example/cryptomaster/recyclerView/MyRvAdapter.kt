@@ -20,12 +20,21 @@ class MyRvAdapter(val dataset : CryptoList) : RecyclerView.Adapter<MyRvAdapter.M
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.currecyName.text = dataset[position].name
+        holder.rank.text = "#"+dataset[position].rank
+
+        if(dataset[position].is_active)
+        holder.isActive.text = "Active"
+        else
+            holder.isActive.text = "Inactive"
+
     }
 
     override fun getItemCount() = dataset.size
 
     inner class MyViewHolder(itemView : View):RecyclerView.ViewHolder(itemView){
-        val currecyName : TextView = itemView.findViewById(R.id.tvCurrencyName)
+        val currecyName : TextView = itemView.findViewById(R.id.cryptoName)
+        val rank : TextView = itemView.findViewById(R.id.rankTV)
+        val isActive : TextView = itemView.findViewById(R.id.isActive)
 
     }
 }

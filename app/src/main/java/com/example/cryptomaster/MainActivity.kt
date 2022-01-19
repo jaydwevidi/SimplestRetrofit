@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvMain.text = "haha ad"
-        var dataset : CryptoList = CryptoList()
 
         lifecycleScope.launchWhenCreated {
             val response = try {
@@ -33,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             }
             if(response.isSuccessful){
                 Log.e(TAG, "response : ${response.body()}")
-                dataset = response.body()!!
 
                 binding.myRv.apply {
                     adapter = MyRvAdapter(response.body()!!)
